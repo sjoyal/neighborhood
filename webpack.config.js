@@ -1,5 +1,5 @@
-const path from 'path';
-const webpack from 'webpack';
+const path = require('path');
+const webpack = require('webpack');
 
 const node_dir = __dirname + '/node_modules';
 
@@ -35,18 +35,18 @@ module.exports = {
                 }
             },
             {
-                test: \/.scss$/,
+                test: /\.scss$/,
                 loader: 'style-loader!css-loader!sass-loader',
             }
         ]
-    }
+    },
 
     devServer: {
         contentBase: './src',
         publicPath: 'http://localhost:8080/dist/',
-    }
+    },
 
     plugins: [
         new webpack.HotModuleReplacementPlugin(),
-    ]
+    ],
 };
