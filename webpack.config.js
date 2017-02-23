@@ -1,37 +1,30 @@
 const path = require('path');
 const webpack = require('webpack');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 const node_dir = __dirname + '/node_modules';
 
 module.exports = {
     devtool: 'eval-source-map',
 
-    resolve: {
-        alias: {
-            react: node_dir + '/react',
-            reactDom: node_dir + '/react-dom',
-        }
-    },
-
     entry: {
         app: ['babel-polyfill', './src/main'],
-        vendor: ['react', 'react-dom'],
+        vendor: ['react', 'react-dom', 'react-router'],
     },
 
     output: {
-        path: path.join(__dirname, '/dist'),
-        filename: '[name].module.js',
-        publicPath: 'http://localhost:8080/dist/',
+        filename: '[name].[hash].js',
+        path: path.join(__dirname, './build/'),
     },
 
     module: {
         loaders: [
-            { test: /\.js?$/,
-                loader: 'babel-loader',
+            {
+                test: /\.js?$/,
                 exclude: /node_modules/,
+                loader: 'babel-loader',
                 query: {
-                    plugins: ['babel-plugin-transform-decorators-legacy'],
-                    presets: ['es2015', 'stage-1', 'react'],
+                    presets: ['latest', 'react'],
                 }
             },
             {
@@ -41,12 +34,16 @@ module.exports = {
         ]
     },
 
-    devServer: {
-        contentBase: './src',
-        publicPath: 'http://localhost:8080/dist/',
-    },
-
     plugins: [
-        new webpack.HotModuleReplacementPlugin(),
+        new webpack.optimize.CommonsChunkPlugin({
+            name: 'vendor',
+            filename: '[name].[hash].js',
+            minChunks: Infinity,
+        }),
+        new HtmlWebpackPlugin({
+            template: path.join(__dirname, './src/index.html'),
+            filename: 'index.html',
+            inject: 'body',
+        }),
     ],
 };
