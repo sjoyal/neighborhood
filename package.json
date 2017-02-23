@@ -1,0 +1,38 @@
+{
+    "name": "neighborhood",
+    "version": "0.0.0",
+    "description": "an app for helping users figure out where to live in duuuuuval",
+    "main": "server.js",
+    "scripts": {
+        "start": "node webpack.server"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/sjoyal/neighborhood.git"
+    },
+    "author": "Sean Joyal",
+    "license": "MIT",
+    "bugs": {
+        "url": "https://github.com/sjoyal/neighborhood/issues"
+    },
+    "homepage": "https://github.com/sjoyal/neighborhood#readme",
+    "devDependencies": {
+        "babel-core": "^6.23.1",
+        "babel-loader": "^6.3.2",
+        "babel-polyfill": "^6.23.0",
+        "babel-preset-latest": "^6.22.0",
+        "babel-preset-react": "^6.23.0",
+        "css-loader": "^0.26.1",
+        "html-webpack-plugin": "^2.28.0",
+        "node-sass": "^4.5.0",
+        "sass-loader": "^6.0.2",
+        "style-loader": "^0.13.1",
+        "webpack": "^2.2.1",
+        "webpack-dev-server": "^2.4.1"
+    },
+    "dependencies": {
+        "react": "^15.4.2",
+        "react-dom": "^15.4.2",
+        "react-router": "^3.0.2"
+    }
+}
