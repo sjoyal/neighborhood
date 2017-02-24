@@ -18,20 +18,24 @@ module.exports = {
     },
 
     module: {
-        loaders: [
+        rules: [
             {
                 test: /\.js?$/,
                 exclude: /node_modules/,
                 loader: 'babel-loader',
-                query: {
+                options: {
                     presets: ['latest', 'react'],
-                }
+                },
             },
             {
                 test: /\.scss$/,
-                loader: 'style-loader!css-loader!sass-loader',
-            }
-        ]
+                use: [
+                    'style-loader',
+                    'css-loader',
+                    'sass-loader',
+                ],
+            },
+        ],
     },
 
     plugins: [
