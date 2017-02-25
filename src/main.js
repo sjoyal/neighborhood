@@ -11,8 +11,9 @@ export function App(props) {
                 <span><Link to="/quiz">Take the quiz!</Link></span>
                 <span><Link to="/results">See the results!</Link></span>
 
-                <AsyncRoute location="/quiz" callback={() => System.import('./quiz').then(m => m.default)} />
-                <AsyncRoute location="/results" callback={() => System.import('./results').then(m => m.default)} />
+                <AsyncRoute strictMatch location="/" fileImport={() => System.import('./welcome').then(m => m.default)} />
+                <AsyncRoute location="/quiz" fileImport={() => System.import('./quiz').then(m => m.default)} />
+                <AsyncRoute location="/results" fileImport={() => System.import('./results').then(m => m.default)} />
             </div>
         </BrowserRouter>
     );

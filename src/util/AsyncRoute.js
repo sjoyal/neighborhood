@@ -33,6 +33,6 @@ function fetchSplitComponent(callback) {
     }
 }
 
-export default function AsyncRoute({ location, callback }) {
-    return <Route path={location} component={fetchSplitComponent(callback)} />;
+export default function AsyncRoute({ strictMatch, location, fileImport }) {
+    return <Route exact={strictMatch} path={location} component={fetchSplitComponent(fileImport)} />;
 }
