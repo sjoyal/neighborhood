@@ -9,8 +9,10 @@ export function App(props) {
             <div>
                 <h3>Hello Neighborhood World!</h3>
                 <span><Link to="/quiz">Take the quiz!</Link></span>
+                <span><Link to="/results">See the results!</Link></span>
 
-                <AsyncRoute location="/quiz" component="quiz" />
+                <AsyncRoute location="/quiz" callback={() => System.import('./quiz').then(m => m.default)} />
+                <AsyncRoute location="/results" callback={() => System.import('./results').then(m => m.default)} />
             </div>
         </BrowserRouter>
     );
